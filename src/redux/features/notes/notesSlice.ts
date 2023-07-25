@@ -70,7 +70,7 @@ export const notesSlice = createSlice({
   },
 });
 
-export const { addNote, addTodo } = notesSlice.actions;
+export const { addNote, addTodo, updateTodo } = notesSlice.actions;
 
 // creating a selector for selecting a single note from store
 export const selectNote = (state: RootState, id: string) =>
