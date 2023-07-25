@@ -1,5 +1,3 @@
-import React from 'react';
-
 // a reusable button component
 // it will get a optional variant prop for styling
 interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {

@@ -1,4 +1,7 @@
 'use client';
+
+import { useRouter } from 'next/navigation';
+
 import { useAppDispatch } from '@/redux/hooks';
 import { nanoid } from '@reduxjs/toolkit';
 
@@ -9,6 +12,7 @@ import PageWrapper from './PageWrapper';
 
 export default function Header() {
   const dispatch = useAppDispatch();
+  const router = useRouter();
 
   // I could have opened a form and add the note after creating the content for it
   // but i've decided to add an empty note first and then navigate to it and edit the content from there because:
@@ -20,6 +24,8 @@ export default function Header() {
     // but I need the id for navigating to the newly created note page so I'm creating it here
     const id = nanoid();
     dispatch(addNote({ id, type: 'text', title: '', content: '' }));
+
+    router.push(`/notes/${id}`);
   };
 
   return (
