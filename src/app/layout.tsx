@@ -1,8 +1,8 @@
 import './globals.css';
 import type { Metadata } from 'next';
 
-import PageWrapper from '@/components/PageWrapper';
 import Header from '@/components/Header';
+import PageWrapper from '@/components/PageWrapper';
 
 // creates a <head></head> element with title and description
 export const metadata: Metadata = {
