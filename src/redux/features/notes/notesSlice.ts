@@ -1,7 +1,7 @@
 import { RootState } from '@/redux/store';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-export type todoType = {
+export type TodoType = {
   id: string;
   text: string;
   completed: boolean;
@@ -11,7 +11,7 @@ export type TodosType = {
   id: string;
   type: 'todo';
   title: string;
-  content: todoType[];
+  content: TodoType[];
 };
 
 export type TextType = {

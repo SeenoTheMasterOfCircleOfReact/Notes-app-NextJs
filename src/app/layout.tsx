@@ -19,10 +19,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fa" dir="rtl">
-      <body className="bg-slate-950 text-white">
+      <body className="bg-slate-950 text-white h-screen flex flex-col border-4">
         <Providers>
           <Header />
-          <PageWrapper>{children}</PageWrapper>
+          <main className="flex-1 py-4">
+            <PageWrapper>{children}</PageWrapper>
+          </main>
         </Providers>
       </body>
     </html>
