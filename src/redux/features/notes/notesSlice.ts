@@ -1,3 +1,4 @@
+import { RootState } from '@/redux/store';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 export type todoType = {
@@ -55,5 +56,9 @@ export const notesSlice = createSlice({
 });
 
 export const { addNote, updateTodo, removeTodo } = notesSlice.actions;
+
+// creating a selector for selecting a single note from store
+export const selectNote = (state: RootState, id: string) =>
+  state.notes.find(note => note.id === id);
 
 export default notesSlice.reducer;
