@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { removeTodo, TodoType, updateTodo } from '../notesSlice';
 import { useAppDispatch } from '@/redux/hooks';
 import Button from '@/UI/Button';
+import { DeleteIcon, SaveIcon } from '@/UI/Icons';
 
 type TodoPropsType = {
   noteId: string;
@@ -55,15 +56,8 @@ export default function Todo({ noteId, todo }: TodoPropsType) {
       <div className="w-max border-2float-left flex gap-2">
         {isChanged && (
           <Button
-            variant="secondary"
-            style={{
-              borderRadius: '100%',
-              padding: 0,
-              width: '3rem',
-              height: '3rem',
-              display: 'flex',
-              justifyContent: 'center',
-            }}
+            variant="save"
+            circular
             onClick={() =>
               dispatch(
                 updateTodo({
@@ -73,32 +67,12 @@ export default function Todo({ noteId, todo }: TodoPropsType) {
               )
             }
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 019 9v.375M10.125 2.25A3.375 3.375 0 0113.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 013.375 3.375M9 15l2.25 2.25L15 12"
-              />
-            </svg>
+            <SaveIcon />
           </Button>
         )}
         <Button
-          variant="secondary"
-          style={{
-            borderRadius: '100%',
-            padding: 0,
-            width: '3rem',
-            height: '3rem',
-            display: 'flex',
-            justifyContent: 'center',
-          }}
+          variant="delete"
+          circular
           onClick={() =>
             dispatch(
               removeTodo({
@@ -108,20 +82,7 @@ export default function Todo({ noteId, todo }: TodoPropsType) {
             )
           }
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
+          <DeleteIcon />
         </Button>
       </div>
     </div>
