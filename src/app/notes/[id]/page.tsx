@@ -8,6 +8,7 @@ import {
   addTodo,
   selectNote,
   selectNoteList,
+  updateNote,
 } from '@/redux/features/notes/notesSlice';
 
 import Button from '@/UI/Button';
@@ -25,8 +26,15 @@ export default function Page({ params }: { params: { id: string } }) {
   const [type, setType] = useState(note.type);
   const [content, setContent] = useState(note.content);
 
-  // checks if the note is a todoList or not
+  // check to see if the note is a todoList or not
   const isTodoList = type === 'todo';
+
+  //check to see if we've changed the content to save or not
+  const isChanged = !(
+    title === note.title &&
+    content === note.content &&
+    type === note.type
+  );
 
   return (
     <div className="h-full flex flex-col">
@@ -51,7 +59,7 @@ export default function Page({ params }: { params: { id: string } }) {
         {isTodoList && <TodosList noteId={params.id} />}
       </div>
 
-      <div className="">
+      <div className="flex items-center justify-between">
         <Button
           variant="secondary"
           style={{
@@ -96,6 +104,15 @@ export default function Page({ params }: { params: { id: string } }) {
             </svg>
           )}
         </Button>
+        {isChanged && (
+          <Button
+            onClick={() =>
+              dispatch(updateNote({ id: params.id, title, content, type }))
+            }
+          >
+            ‌ذخیره
+          </Button>
+        )}
       </div>
     </div>
   );

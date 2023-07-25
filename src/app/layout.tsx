@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fa" dir="rtl">
-      <body className="bg-slate-950 text-white h-screen flex flex-col border-4">
+      <body className="bg-slate-950 text-white h-screen flex flex-col overflow-y-scroll">
         <Providers>
           <Header />
           <main className="flex-1 py-4">

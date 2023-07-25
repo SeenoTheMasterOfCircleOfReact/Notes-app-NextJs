@@ -17,7 +17,7 @@ export default function TodosList({ noteId }: { noteId: string }) {
     );
   };
   return (
-    <>
+    <div className="h-full">
       {list.map(todo => (
         <Todo key={todo.id} todo={todo} noteId={noteId} />
       ))}
@@ -41,6 +41,6 @@ export default function TodosList({ noteId }: { noteId: string }) {
         </svg>
         افزودن فعالیت
       </div>
-    </>
+    </div>
   );
 }

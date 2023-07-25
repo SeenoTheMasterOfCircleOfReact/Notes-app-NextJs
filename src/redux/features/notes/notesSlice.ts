@@ -38,9 +38,19 @@ export const notesSlice = createSlice({
     addNote(state, action: PayloadAction<NoteType>) {
       state.push(action.payload);
     },
+    updateNote(state, action: PayloadAction<NoteType>) {
+      const { id, title, content, type } = action.payload;
+      // we are finding the note first and checking if it exist
+      const existingNote = state.find(note => note.id === id);
+      if (!existingNote) return;
+
+      existingNote.title = title;
+      existingNote.content = content;
+      existingNote.type = type;
+    },
     addTodo(state, action: PayloadAction<TodoPayloadType>) {
       const { noteId, todo } = action.payload;
-      // we are finding the note that we're going to update it's todo
+      // we are finding the note
       const existingNote = state.find(note => note.id === noteId);
       // return if we didn't find it
       if (!existingNote) return;
@@ -49,7 +59,7 @@ export const notesSlice = createSlice({
     },
     updateTodo(state, action: PayloadAction<TodoPayloadType>) {
       const { noteId, todo } = action.payload;
-      // we are finding the note that we're going to update it's todo
+      // we are finding the note
       const existingNote = state.find(note => note.id === noteId);
       // return if we didn't find it
       if (!existingNote) return;
@@ -65,7 +75,7 @@ export const notesSlice = createSlice({
     // here passing the whole todo for removing is unnecessary but i don't want to create a new type for just this payload.
     removeTodo(state, action: PayloadAction<TodoPayloadType>) {
       const { noteId, todo } = action.payload;
-      // we are finding the note that we're going to update it's todo
+      // we are finding the note
       const existingNote = state.find(note => note.id === noteId);
       // return if we didn't find it
       if (!existingNote) return;
@@ -76,7 +86,8 @@ export const notesSlice = createSlice({
   },
 });
 
-export const { addNote, addTodo, updateTodo, removeTodo } = notesSlice.actions;
+export const { addNote, updateNote, addTodo, updateTodo, removeTodo } =
+  notesSlice.actions;
 
 // creating a selector for selecting a single note from store
 export const selectNote = (state: RootState, id: string) =>
