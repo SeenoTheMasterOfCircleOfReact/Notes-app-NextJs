@@ -48,6 +48,11 @@ export const notesSlice = createSlice({
       existingNote.content = content;
       existingNote.type = type;
     },
+    removeNote(state, action: PayloadAction<NoteType>) {
+      const { id } = action.payload;
+
+      return state.filter(note => note.id !== id);
+    },
     addTodo(state, action: PayloadAction<TodoPayloadType>) {
       const { noteId, todo } = action.payload;
       // we are finding the note
@@ -86,8 +91,14 @@ export const notesSlice = createSlice({
   },
 });
 
-export const { addNote, updateNote, addTodo, updateTodo, removeTodo } =
-  notesSlice.actions;
+export const {
+  addNote,
+  updateNote,
+  removeNote,
+  addTodo,
+  updateTodo,
+  removeTodo,
+} = notesSlice.actions;
 
 // creating a selector for selecting a single note from store
 export const selectNote = (state: RootState, id: string) =>
