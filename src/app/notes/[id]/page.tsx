@@ -60,7 +60,7 @@ export default function Page({ params }: { params: { id: string } }) {
         {isTodoList && <TodosList noteId={params.id} />}
       </div>
 
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between py-2">
         <Button
           variant="secondary"
           circular

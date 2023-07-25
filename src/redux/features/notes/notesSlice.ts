@@ -21,14 +21,14 @@ type TodoPayloadType = {
 };
 
 const initialState: NoteType[] = [
-  { id: '1', type: 'text', title: 'ffff', content: 'fffff', list: [] },
-  {
-    id: '2',
-    type: 'todo',
-    title: 'ffff',
-    content: '',
-    list: [{ id: 'ssdfd', text: 'ststt', completed: false }],
-  },
+  // { id: '1', type: 'text', title: 'ffff', content: 'fffff', list: [] },
+  // {
+  //   id: '2',
+  //   type: 'todo',
+  //   title: 'ffff',
+  //   content: '',
+  //   list: [{ id: 'ssdfd', text: 'ststt', completed: false }],
+  // },
 ];
 
 export const notesSlice = createSlice({

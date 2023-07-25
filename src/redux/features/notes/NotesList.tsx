@@ -12,24 +12,34 @@ export default function NotesList() {
 
   return (
     <>
-      {notes.map(note => (
-        <div
-          key={note.id}
-          className="border-2 my-2 p-4 flex justify-between items-center rounded-lg"
-        >
-          <Link key={note.id} href={`notes/${note.id}`}>
-            {note.title}
-          </Link>
+      {notes.length > 0 ? (
+        <>
+          {notes.map(note => (
+            <div
+              key={note.id}
+              className="border-2 my-2 px-2 py-2 flex justify-between items-center rounded-lg"
+            >
+              <Link
+                key={note.id}
+                href={`notes/${note.id}`}
+                className="h-12 flex-1 flex items-center"
+              >
+                {note.title}
+              </Link>
 
-          <Button
-            circular
-            variant="delete"
-            onClick={() => dispatch(removeNote(note))}
-          >
-            <DeleteIcon />
-          </Button>
-        </div>
-      ))}
+              <Button
+                circular
+                variant="delete"
+                onClick={() => dispatch(removeNote(note))}
+              >
+                <DeleteIcon />
+              </Button>
+            </div>
+          ))}
+        </>
+      ) : (
+        <div>یادداشت های شما خالی است</div>
+      )}
     </>
   );
 }
