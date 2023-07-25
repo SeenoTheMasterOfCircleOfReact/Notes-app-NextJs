@@ -21,12 +21,8 @@ export default function Header() {
   // 2) I don't need a complex logic for add and edit form. it simply has one form for editing
   // 3) google keep works this way
   const addNoteHandler = () => {
-    // I could have created the id for each note in the notes reducer for more abstraction
-    // but I need the id for navigating to the newly created note page so I'm creating it here
     const id = nanoid();
     dispatch(addNote({ id, type: 'text', title: '', content: '', list: [] }));
-
-    router.push(`/notes/${id}`);
   };
 
   return (
