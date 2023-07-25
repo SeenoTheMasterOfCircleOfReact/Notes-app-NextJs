@@ -23,7 +23,7 @@ export default function Header() {
     // I could have created the id for each note in the notes reducer for more abstraction
     // but I need the id for navigating to the newly created note page so I'm creating it here
     const id = nanoid();
-    dispatch(addNote({ id, type: 'text', title: '', content: '' }));
+    dispatch(addNote({ id, type: 'text', title: '', content: '', list: [] }));
 
     router.push(`/notes/${id}`);
   };

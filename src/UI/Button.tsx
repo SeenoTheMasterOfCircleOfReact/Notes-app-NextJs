@@ -12,7 +12,7 @@ function Button(props: ButtonProps) {
     return (
       <button
         {...rest}
-        className="px-10 w-max h-10 bg-slate-200 hover:bg-slate-300 active:bg-slate-100 flex items-center rounded-md shadow-md text-lg font-semibold text-slate-500"
+        className="px-10 w-max h-10 flex items-center rounded-md shadow-md text-lg font-semibold text-white hover:bg-violet-800 active:bg-violet-600 disabled:bg-violet-200 disabled:cursor-not-allowed"
       />
     );
   }

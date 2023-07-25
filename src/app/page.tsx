@@ -1,3 +1,11 @@
+'use client';
+
+import NotesList from '@/redux/features/notes/NotesList';
+
 export default function Home() {
-  return <div>بخدا تو مسلمون نیستی</div>;
+  return (
+    <div>
+      <NotesList />
+    </div>
+  );
 }
