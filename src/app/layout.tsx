@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 
 import Header from '@/components/Header';
 import PageWrapper from '@/components/PageWrapper';
+import Providers from '@/redux/Providers';
 
 // creates a <head></head> element with title and description
 export const metadata: Metadata = {
@@ -19,8 +20,10 @@ export default function RootLayout({
   return (
     <html lang="fa" dir="rtl">
       <body className="bg-slate-950 text-white">
-        <Header />
-        <PageWrapper>{children}</PageWrapper>
+        <Providers>
+          <Header />
+          <PageWrapper>{children}</PageWrapper>
+        </Providers>
       </body>
     </html>
   );

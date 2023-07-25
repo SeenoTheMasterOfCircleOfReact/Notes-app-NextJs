@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-// import todosReducer from '../features/todos/todosSlice';
+import notesReducer from './features/notes/notesSlice';
 
 // creating the store
 export const store = configureStore({
   reducer: {
-    // todos: todosReducer,
+    // adding our notes reducer to main store
+    notes: notesReducer,
   },
 });
 
