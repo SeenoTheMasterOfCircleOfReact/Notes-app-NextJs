@@ -15,6 +15,11 @@ export type NoteType = {
   list: TodoType[];
 };
 
+type AddTodoPayload = {
+  noteId: string;
+  todo: TodoType;
+};
+
 const initialState: NoteType[] = [
   { id: '1', type: 'text', title: 'ffff', content: 'fffff', list: [] },
   {
@@ -32,6 +37,15 @@ export const notesSlice = createSlice({
   reducers: {
     addNote(state, action: PayloadAction<NoteType>) {
       state.push(action.payload);
+    },
+    addTodo(state, action: PayloadAction<AddTodoPayload>) {
+      const { noteId, todo } = action.payload;
+      // we are finding the note that we're going to update it's todo
+      const existingNote = state.find(note => note.id === noteId);
+      // return if we didn't find it
+      if (!existingNote) return;
+
+      existingNote.list.push(todo);
     },
     updateTodo(state, action: PayloadAction<NoteType>) {
       // const { id, title, checked } = action.payload;

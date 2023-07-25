@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { notFound } from 'next/navigation';
 
+import { nanoid } from '@reduxjs/toolkit';
 import { useAppSelector } from '@/redux/hooks';
 import { selectNote } from '@/redux/features/notes/notesSlice';
 
@@ -25,11 +26,12 @@ export default function Page({ params }: { params: { id: string } }) {
 
   // const adding newTodo to array
   const handleAddTodo = () => {
-    setList(current => [
-      ...current,
-      { id: 'hi', text: 'hi', completed: false },
-    ]);
+    const newList = [...list];
+    newList.push({ id: nanoid(), text: 'hi', completed: false });
+    setList(newList);
   };
+
+  console.log(list);
 
   return (
     <div className="h-full flex flex-col">
@@ -53,10 +55,15 @@ export default function Page({ params }: { params: { id: string } }) {
         )}
         {isTodoList && (
           <>
-            {list?.map(todo => {
-              <div key={todo.id}>{todo.text}</div>;
-            })}
-            <div className="px-4 py-2 my-4 mx-8 w-max rounded-md flex gap-4 items-center border-2 border-slate-400 cursor-pointer">
+            {list.map(todo => (
+              <div key={todo.id} className="border-2">
+                {todo.text}
+              </div>
+            ))}
+            <div
+              className="px-4 py-2 my-4 mx-8 w-max rounded-md flex gap-4 items-center border-2 border-slate-400 cursor-pointer"
+              onClick={handleAddTodo}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
