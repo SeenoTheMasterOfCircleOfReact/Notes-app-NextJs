@@ -15,7 +15,7 @@ export type NoteType = {
   list: TodoType[];
 };
 
-type AddTodoPayload = {
+type TodoPayloadType = {
   noteId: string;
   todo: TodoType;
 };
@@ -38,7 +38,7 @@ export const notesSlice = createSlice({
     addNote(state, action: PayloadAction<NoteType>) {
       state.push(action.payload);
     },
-    addTodo(state, action: PayloadAction<AddTodoPayload>) {
+    addTodo(state, action: PayloadAction<TodoPayloadType>) {
       const { noteId, todo } = action.payload;
       // we are finding the note that we're going to update it's todo
       const existingNote = state.find(note => note.id === noteId);
@@ -47,7 +47,7 @@ export const notesSlice = createSlice({
 
       existingNote.list.push(todo);
     },
-    updateTodo(state, action: PayloadAction<AddTodoPayload>) {
+    updateTodo(state, action: PayloadAction<TodoPayloadType>) {
       const { noteId, todo } = action.payload;
       // we are finding the note that we're going to update it's todo
       const existingNote = state.find(note => note.id === noteId);
@@ -62,15 +62,25 @@ export const notesSlice = createSlice({
       existingTodo.text = todo.text;
       existingTodo.completed = todo.completed;
     },
-    removeTodo(state, action: PayloadAction<string>) {
-      const id = action.payload;
+    // here passing the whole todo for removing is unnecessary but i don't want to create a new type for just this payload.
+    removeTodo(state, action: PayloadAction<TodoPayloadType>) {
+      const { noteId, todo } = action.payload;
+      // we are finding the note that we're going to update it's todo
+      const existingNote = state.find(note => note.id === noteId);
+      // return if we didn't find it
+      if (!existingNote) return;
 
-      return state.filter(todo => todo.id !== id);
+      // checking to see if the todo that we are trying to edit exist
+      const existingTodo = existingNote.list.find(t => t.id === todo.id);
+      if (!existingTodo) return;
+
+      // and finally we'll delete the todo if there is no problem
+      existingNote.list = existingNote.list.filter(todo => todo.id !== todo.id);
     },
   },
 });
 
-export const { addNote, addTodo, updateTodo } = notesSlice.actions;
+export const { addNote, addTodo, updateTodo, removeTodo } = notesSlice.actions;
 
 // creating a selector for selecting a single note from store
 export const selectNote = (state: RootState, id: string) =>
