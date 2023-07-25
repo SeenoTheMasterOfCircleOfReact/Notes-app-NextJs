@@ -1,6 +1,7 @@
 import { nanoid } from '@reduxjs/toolkit';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { addTodo, selectNoteList } from '../notesSlice';
+import Todo from './Todo';
 
 export default function TodosList({ noteId }: { noteId: string }) {
   const dispatch = useAppDispatch();
@@ -18,9 +19,7 @@ export default function TodosList({ noteId }: { noteId: string }) {
   return (
     <>
       {list.map(todo => (
-        <div key={todo.id} className="border-2">
-          {todo.text}
-        </div>
+        <Todo key={todo.id} todo={todo} noteId={noteId} />
       ))}
       <div
         className="px-4 py-2 my-4 mx-8 w-max rounded-md flex gap-4 items-center border-2 border-slate-400 cursor-pointer"
