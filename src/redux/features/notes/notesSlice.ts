@@ -70,12 +70,8 @@ export const notesSlice = createSlice({
       // return if we didn't find it
       if (!existingNote) return;
 
-      // checking to see if the todo that we are trying to edit exist
-      const existingTodo = existingNote.list.find(t => t.id === todo.id);
-      if (!existingTodo) return;
-
       // and finally we'll delete the todo if there is no problem
-      existingNote.list = existingNote.list.filter(todo => todo.id !== todo.id);
+      existingNote.list = existingNote.list.filter(t => t.id !== todo.id);
     },
   },
 });

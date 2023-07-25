@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { TodoType, updateTodo } from '../notesSlice';
+import { removeTodo, TodoType, updateTodo } from '../notesSlice';
 import { useAppDispatch } from '@/redux/hooks';
 import Button from '@/UI/Button';
 
@@ -101,7 +101,7 @@ export default function Todo({ noteId, todo }: TodoPropsType) {
           }}
           onClick={() =>
             dispatch(
-              updateTodo({
+              removeTodo({
                 noteId,
                 todo: { id: todo.id, text, completed: isCompleted },
               })
