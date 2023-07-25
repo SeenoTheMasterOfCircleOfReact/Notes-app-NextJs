@@ -4,12 +4,13 @@ import { useState } from 'react';
 import { notFound } from 'next/navigation';
 
 import { nanoid } from '@reduxjs/toolkit';
-import { useAppSelector } from '@/redux/hooks';
-import { selectNote } from '@/redux/features/notes/notesSlice';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { addTodo, selectNote } from '@/redux/features/notes/notesSlice';
 
 import Button from '@/UI/Button';
 
 export default function Page({ params }: { params: { id: string } }) {
+  const dispatch = useAppDispatch();
   // using the custom selectNote selector to get the needed note
   const note = useAppSelector(state => selectNote(state, params.id));
   // if there is no note with the given id we get a 404 page
@@ -26,13 +27,18 @@ export default function Page({ params }: { params: { id: string } }) {
 
   // const adding newTodo to array
   const handleAddTodo = () => {
-    const newList = [...list];
-    newList.push({ id: nanoid(), text: 'hi', completed: false });
-    setList(newList);
+    // const newList = [...list];
+    // newList.push({ id: nanoid(), text: 'hi', completed: false });
+    // setList(newList);
+    dispatch(
+      addTodo({
+        noteId: params.id,
+        todo: { id: nanoid(), text: 'hi', completed: false },
+      })
+    );
   };
 
   console.log(list);
-
   return (
     <div className="h-full flex flex-col">
       <input

@@ -62,10 +62,18 @@ export const notesSlice = createSlice({
   },
 });
 
-export const { addNote, updateTodo, removeTodo } = notesSlice.actions;
+export const { addNote, addTodo } = notesSlice.actions;
 
 // creating a selector for selecting a single note from store
 export const selectNote = (state: RootState, id: string) =>
   state.notes.find(note => note.id === id);
+// getting the todo list of a note
+export const selectNoteList = (state: RootState, id: string) => {
+  const existingNote = state.notes.find(note => note.id === id);
+  // if the note didn't exist we return and empty array. the page will show error 404 anyway
+  if (!existingNote) return [];
+
+  return existingNote.list;
+};
 
 export default notesSlice.reducer;
