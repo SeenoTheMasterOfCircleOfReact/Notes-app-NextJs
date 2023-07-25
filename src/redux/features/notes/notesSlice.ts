@@ -47,12 +47,20 @@ export const notesSlice = createSlice({
 
       existingNote.list.push(todo);
     },
-    updateTodo(state, action: PayloadAction<NoteType>) {
-      // const { id, title, checked } = action.payload;
-      // const existingTodo = state.find(todo => todo.id === id);
-      // if (!existingTodo) return;
-      // existingTodo.title = title;
-      // existingTodo.checked = checked;
+    updateTodo(state, action: PayloadAction<AddTodoPayload>) {
+      const { noteId, todo } = action.payload;
+      // we are finding the note that we're going to update it's todo
+      const existingNote = state.find(note => note.id === noteId);
+      // return if we didn't find it
+      if (!existingNote) return;
+
+      // checking to see if the todo that we are trying to edit exist
+      const existingTodo = existingNote.list.find(t => t.id === todo.id);
+      if (!existingTodo) return;
+
+      // and finally we'll update the todo if there is no problem
+      existingTodo.text = todo.text;
+      existingTodo.completed = todo.completed;
     },
     removeTodo(state, action: PayloadAction<string>) {
       const id = action.payload;

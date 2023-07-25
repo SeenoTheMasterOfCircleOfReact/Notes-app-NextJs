@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { TodoType } from '../notesSlice';
+import { useAppDispatch } from '@/redux/hooks';
 
 type TodoPropsType = {
   noteId: string;
@@ -8,6 +9,8 @@ type TodoPropsType = {
 };
 
 export default function Todo({ noteId, todo }: TodoPropsType) {
+  const dispatch = useAppDispatch();
+
   const [isCompleted, setIsCompleted] = useState(todo.completed);
   const [text, setText] = useState(todo.text);
 
