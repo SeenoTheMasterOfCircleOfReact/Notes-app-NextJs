@@ -3,42 +3,31 @@
 import { useState } from 'react';
 import { notFound } from 'next/navigation';
 
-import { nanoid } from '@reduxjs/toolkit';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { addTodo, selectNote } from '@/redux/features/notes/notesSlice';
+import {
+  addTodo,
+  selectNote,
+  selectNoteList,
+} from '@/redux/features/notes/notesSlice';
 
 import Button from '@/UI/Button';
+import TodosList from '@/redux/features/notes/todos/TodosList';
 
 export default function Page({ params }: { params: { id: string } }) {
   const dispatch = useAppDispatch();
   // using the custom selectNote selector to get the needed note
   const note = useAppSelector(state => selectNote(state, params.id));
-  // if there is no note with the given id we get a 404 page
 
+  // if there is no note with the given id we get a 404 page
   if (!note) notFound();
 
   const [title, setTitle] = useState(note.title);
   const [type, setType] = useState(note.type);
   const [content, setContent] = useState(note.content);
-  const [list, setList] = useState(note.list);
 
   // checks if the note is a todoList or not
   const isTodoList = type === 'todo';
 
-  // const adding newTodo to array
-  const handleAddTodo = () => {
-    // const newList = [...list];
-    // newList.push({ id: nanoid(), text: 'hi', completed: false });
-    // setList(newList);
-    dispatch(
-      addTodo({
-        noteId: params.id,
-        todo: { id: nanoid(), text: 'hi', completed: false },
-      })
-    );
-  };
-
-  console.log(list);
   return (
     <div className="h-full flex flex-col">
       <input
@@ -59,35 +48,7 @@ export default function Page({ params }: { params: { id: string } }) {
             onChange={e => setContent(e.target.value)}
           ></textarea>
         )}
-        {isTodoList && (
-          <>
-            {list.map(todo => (
-              <div key={todo.id} className="border-2">
-                {todo.text}
-              </div>
-            ))}
-            <div
-              className="px-4 py-2 my-4 mx-8 w-max rounded-md flex gap-4 items-center border-2 border-slate-400 cursor-pointer"
-              onClick={handleAddTodo}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 4.5v15m7.5-7.5h-15"
-                />
-              </svg>
-              افزودن فعالیت
-            </div>
-          </>
-        )}
+        {isTodoList && <TodosList noteId={params.id} />}
       </div>
 
       <div className="">
