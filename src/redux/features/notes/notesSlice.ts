@@ -7,29 +7,22 @@ export type TodoType = {
   completed: boolean;
 };
 
-export type TodosType = {
+export type NoteType = {
   id: string;
-  type: 'todo';
-  title: string;
-  content: TodoType[];
-};
-
-export type TextType = {
-  id: string;
-  type: 'text';
+  type: 'text' | 'todo';
   title: string;
   content: string;
+  list: TodoType[];
 };
 
-export type NoteType = TextType | TodosType;
-
 const initialState: NoteType[] = [
-  { id: '1', type: 'text', title: 'ffff', content: 'fffff' },
+  { id: '1', type: 'text', title: 'ffff', content: 'fffff', list: [] },
   {
     id: '2',
     type: 'todo',
     title: 'ffff',
-    content: [{ id: 'ssdfd', text: 'ststt', completed: false }],
+    content: '',
+    list: [{ id: 'ssdfd', text: 'ststt', completed: false }],
   },
 ];
 
