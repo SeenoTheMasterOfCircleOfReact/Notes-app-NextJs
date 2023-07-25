@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className="bg-slate-950 text-white h-screen flex flex-col overflow-y-scroll">
         <Providers>
           <Header />
-          <main className="flex-1 py-4">
+          <main className="border-red-300">
             <PageWrapper>{children}</PageWrapper>
           </main>
         </Providers>

@@ -9,6 +9,7 @@ import { addNote } from '@/redux/features/notes/notesSlice';
 
 import Button from '@/UI/Button';
 import PageWrapper from './PageWrapper';
+import Link from 'next/link';
 
 export default function Header() {
   const dispatch = useAppDispatch();
@@ -29,12 +30,14 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-violet-800">
+    <header className="fixed top-0 left-0 w-full bg-violet-800">
       <PageWrapper>
         <div className="text-5xl font-black py-5 flex justify-between items-center">
-          <div>
-            <span className="text-amber-400">یا</span>دت نره
-          </div>
+          <Link href="/">
+            <div>
+              <span className="text-amber-400">یا</span>دت نره
+            </div>
+          </Link>
 
           <Button onClick={addNoteHandler}>افزودن یادداشت</Button>
         </div>

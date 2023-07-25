@@ -37,7 +37,7 @@ export default function Page({ params }: { params: { id: string } }) {
   );
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="pt-24 flex flex-col">
       <input
         type="text"
         className="w-full bg-transparent py-8 px-8 text-xl font-semibold focus:outline-none border-b-2 border-slate-800"
@@ -107,7 +107,15 @@ export default function Page({ params }: { params: { id: string } }) {
         {isChanged && (
           <Button
             onClick={() =>
-              dispatch(updateNote({ id: params.id, title, content, type }))
+              dispatch(
+                updateNote({
+                  id: params.id,
+                  title,
+                  content,
+                  type,
+                  list: note.list,
+                })
+              )
             }
           >
             ‌ذخیره
