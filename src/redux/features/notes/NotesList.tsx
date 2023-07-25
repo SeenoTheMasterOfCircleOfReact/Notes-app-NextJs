@@ -1,10 +1,12 @@
 'use Client';
 
 import Link from 'next/link';
+
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+
 import Button from '@/UI/Button';
 import { DeleteIcon } from '@/UI/Icons';
-import { NoteType, removeNote } from './notesSlice';
+import { removeNote } from './notesSlice';
 
 export default function NotesList() {
   const notes = useAppSelector(state => state.notes);

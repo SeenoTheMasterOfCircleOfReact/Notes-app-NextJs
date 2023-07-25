@@ -1,4 +1,5 @@
 import { nanoid } from '@reduxjs/toolkit';
+
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { addTodo, selectNoteList } from '../notesSlice';
 import Todo from './Todo';

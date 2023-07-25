@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { removeTodo, TodoType, updateTodo } from '../notesSlice';
+
 import { useAppDispatch } from '@/redux/hooks';
 import Button from '@/UI/Button';
 import { DeleteIcon, SaveIcon } from '@/UI/Icons';

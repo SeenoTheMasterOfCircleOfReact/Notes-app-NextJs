@@ -1,9 +1,10 @@
 import './globals.css';
 import type { Metadata } from 'next';
 
+import Providers from '@/redux/Providers';
+
 import Header from '@/components/Header';
 import PageWrapper from '@/components/PageWrapper';
-import Providers from '@/redux/Providers';
 
 // creates a <head></head> element with title and description
 export const metadata: Metadata = {

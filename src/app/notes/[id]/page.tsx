@@ -4,16 +4,11 @@ import { useState } from 'react';
 import { notFound } from 'next/navigation';
 
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import {
-  addTodo,
-  selectNote,
-  selectNoteList,
-  updateNote,
-} from '@/redux/features/notes/notesSlice';
+import { selectNote, updateNote } from '@/redux/features/notes/notesSlice';
 
-import Button from '@/UI/Button';
 import TodosList from '@/redux/features/notes/todos/TodosList';
 import { CheckboxIcon, DocumentIcon } from '@/UI/Icons';
+import Button from '@/UI/Button';
 
 export default function Page({ params }: { params: { id: string } }) {
   const dispatch = useAppDispatch();

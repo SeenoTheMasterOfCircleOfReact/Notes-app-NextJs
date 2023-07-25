@@ -1,15 +1,14 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-
-import { useAppDispatch } from '@/redux/hooks';
+import Link from 'next/link';
 import { nanoid } from '@reduxjs/toolkit';
 
+import { useAppDispatch } from '@/redux/hooks';
 import { addNote } from '@/redux/features/notes/notesSlice';
 
 import Button from '@/UI/Button';
 import PageWrapper from './PageWrapper';
-import Link from 'next/link';
 
 export default function Header() {
   const dispatch = useAppDispatch();
