@@ -14,7 +14,6 @@ export default function NotesList() {
 
   // reordering the notes. new notes should be on top of the page
   const orderedNotes = [...notes].reverse();
-  console.log(notes, orderedNotes);
   return (
     <>
       {orderedNotes.length > 0 ? (
