@@ -12,6 +12,11 @@ type NotePropsType = {
 
 export default function Note({ note }: NotePropsType) {
   const dispatch = useAppDispatch();
+
+  // we're limiting the displaying characters for title
+  const title =
+    note.title.length > 40 ? note.title.slice(0, 40) + '...' : note.title;
+
   return (
     <div
       key={note.id}
@@ -22,7 +27,7 @@ export default function Note({ note }: NotePropsType) {
         href={`notes/${note.id}`}
         className="h-12 flex-1 flex items-center"
       >
-        {note.title}
+        {title}
       </Link>
 
       <Button
