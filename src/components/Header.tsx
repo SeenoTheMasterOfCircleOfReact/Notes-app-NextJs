@@ -23,7 +23,8 @@ export default function Header() {
     const id = nanoid();
     dispatch(addNote({ id, type: 'text', title: '', content: '', list: [] }));
 
-    router.push('/');
+    // navigating to note page after creating it
+    router.push(`/notes/${id}`);
   };
 
   return (
