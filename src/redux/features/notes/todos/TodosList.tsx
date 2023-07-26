@@ -20,7 +20,7 @@ export default function TodosList({ noteId }: { noteId: string }) {
     dispatch(
       addTodo({
         noteId,
-        todo: { id: nanoid(), text: 'hi', completed: false },
+        todo: { id: nanoid(), text: '', completed: false },
       })
     );
   };
