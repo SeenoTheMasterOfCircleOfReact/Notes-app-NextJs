@@ -12,11 +12,14 @@ export default function NotesList() {
   const notes = useAppSelector(state => state.notes);
   const dispatch = useAppDispatch();
 
+  // reordering the notes. new notes should be on top of the page
+  const orderedNotes = [...notes].reverse();
+  console.log(notes, orderedNotes);
   return (
     <>
-      {notes.length > 0 ? (
+      {orderedNotes.length > 0 ? (
         <>
-          {notes.map(note => (
+          {orderedNotes.map(note => (
             <div
               key={note.id}
               className="border-2 my-2 px-2 py-2 flex justify-between items-center rounded-lg"

@@ -8,6 +8,13 @@ export default function TodosList({ noteId }: { noteId: string }) {
   const dispatch = useAppDispatch();
   // we select the list manually with it's own selector
   const list = useAppSelector(state => selectNoteList(state, noteId));
+
+  // reordering the list so that the completed tasks go to the bottom and new tasks are added to the top
+  const orderedList = [
+    ...list.filter(todo => !todo.completed).reverse(),
+    ...list.filter(todo => todo.completed).reverse(),
+  ];
+
   // adding newTodo to our note
   const handleAddTodo = () => {
     dispatch(
@@ -19,7 +26,7 @@ export default function TodosList({ noteId }: { noteId: string }) {
   };
   return (
     <div className="h-full">
-      {list.map(todo => (
+      {orderedList.map(todo => (
         <Todo key={todo.id} todo={todo} noteId={noteId} />
       ))}
       <div
