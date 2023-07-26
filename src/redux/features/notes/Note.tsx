@@ -20,7 +20,7 @@ export default function Note({ note }: NotePropsType) {
   return (
     <div
       key={note.id}
-      className="border-2 my-2 px-2 py-2 flex justify-between items-center rounded-lg"
+      className="border-2 px-2 py-2 flex justify-between items-center rounded-lg"
     >
       <Link
         key={note.id}
