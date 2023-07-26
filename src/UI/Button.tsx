@@ -75,7 +75,7 @@ function Button(props: ButtonProps) {
   return (
     <button
       {...rest}
-      className="px-4 py-2 rounded-full text-lg text-violet-950 font-extrabold bg-amber-500 hover:bg-amber-600 active:bg-amber-400 disabled:bg-amber-200 disabled:cursor-not-allowed"
+      className="px-4 py-2 rounded-full text-sm text-violet-950 font-extrabold bg-amber-500 hover:bg-amber-600 active:bg-amber-400 disabled:bg-amber-200 disabled:cursor-not-allowed"
       style={
         circular
           ? {

@@ -33,10 +33,10 @@ export default function Page({ params }: { params: { id: string } }) {
   );
 
   return (
-    <div className="pt-24 flex flex-col">
+    <div className="pt-20 flex flex-col">
       <input
         type="text"
-        className="w-full bg-transparent py-8 px-8 text-xl font-semibold focus:outline-none border-b-2 border-slate-800"
+        className="w-full bg-transparent py-4 px-2 text-xl font-semibold focus:outline-none border-b-2 border-slate-800"
         placeholder="عنوان یادداشت"
         autoFocus
         value={title}
@@ -46,7 +46,7 @@ export default function Page({ params }: { params: { id: string } }) {
       <div className="flex-1">
         {!isTodoList && (
           <textarea
-            className="w-full h-full bg-transparent py-8 px-8 focus:outline-none"
+            className="w-full h-full bg-transparent py-4 px-2 focus:outline-none"
             placeholder="متن یادداشت"
             value={content}
             onChange={e => setContent(e.target.value)}

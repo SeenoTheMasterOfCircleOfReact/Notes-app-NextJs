@@ -22,12 +22,14 @@ export default function Header() {
   const addNoteHandler = () => {
     const id = nanoid();
     dispatch(addNote({ id, type: 'text', title: '', content: '', list: [] }));
+
+    router.push('/');
   };
 
   return (
     <header className="fixed top-0 left-0 w-full bg-violet-800">
       <PageWrapper>
-        <div className="text-5xl font-black py-5 flex justify-between items-center">
+        <div className="text-2xl font-black py-5 flex justify-between items-center">
           <Link href="/">
             <div>
               <span className="text-amber-400">یا</span>دت نره

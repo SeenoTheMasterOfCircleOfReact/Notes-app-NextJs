@@ -4,5 +4,5 @@ export default function PageWrapper({
 }: {
   children: React.ReactNode;
 }) {
-  return <div className="container mx-auto px-8 h-full">{children}</div>;
+  return <div className="container mx-auto px-2 h-full">{children}</div>;
 }
